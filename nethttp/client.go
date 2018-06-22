@@ -213,8 +213,7 @@ func (h *Tracer) clientTrace() *httptrace.ClientTrace {
 }
 
 func (h *Tracer) getConn(hostPort string) {
-	ext.HTTPUrl.Set(h.sp, hostPort)
-	h.sp.LogFields(log.String("event", "GetConn"))
+	h.sp.LogFields(log.String("event", "GetConn"), log.String("hostPort", hostPort))
 }
 
 func (h *Tracer) gotConn(info httptrace.GotConnInfo) {
